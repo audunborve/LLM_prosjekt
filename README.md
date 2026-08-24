@@ -4,7 +4,7 @@ Formålet med prosjektet er å kode og trene en fungerende tekst-prediktor i van
 
 Modellen bruker embedding av tekststrenger i vektorrepresentasjon, som kjøres gjennom L lag som hvert kombinerer attention med feed-forward activation. Activation-funksjonen som tas i bruk er ReLu. Loss måles i crossentropy.
 
-Modellarkitekturen er bygget ut gjennom en Layer-klasse, hvor funksjonsstegene (attention, softmax, embedding, ReLu etc) er child-klasser av denne. Disse har tilhørende metoder for forwards og backwards pass. Det benyttes en generisk LinearLayer klasse som håndterer tensorbehandling i de øvrige lagene.
+Modellarkitekturen er bygget ut gjennom en Layer-klasse, hvor funksjonsstegene (attention, softmax, embedding, ReLu etc) er child-klasser av denne. Disse har tilhørende metoder for forwards og backwards pass. Det benyttes en generisk LinearLayer klasse som skal håndtere tensorbehandling i de øvrige lagene.
 
 Prosjektet benytter standard AD (automatic differentiation), og parametere lagres i dict-strukturer sammen med tilhørende gradienter. Ved trening av nettverket kjøres forward og backwards pass etterfølgende gjennom lagene, hvor løpende funksjonsverdier og gradienter tas vare på fortløpende for optimert kjøretid - som er industristandard.
 
